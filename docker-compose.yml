@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  tomcat:
+    image: tomcat:latest
+    container_name: webapp
+    ports:
+      - "8080:8080"
+    volumes:
+#      - ./target/.war:/usr/local/tomcat/webapps/ROOT.war:ro
+      - ./account/target/account.war:/usr/local/tomcat/webapps/account.war:ro
+    environment:
+      - JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom  # Optional Java options
